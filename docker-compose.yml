@@ -1,11 +1,11 @@
 services:
   gateway:
     image: bwdesigngroup/ignition-docker:latest
-    hostname: gateway
+    hostname: bwutil
     ports:
       - 8088
     volumes:
-      - ./ignition-data:/workdir
+      - ./ignition-bwutil:/workdir
       - ./backups/gateway.gwbk:/restore.gwbk
     environment:
       - SYMLINK_GITIGNORE=false
