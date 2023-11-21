@@ -1,14 +1,47 @@
 services:
-  gateway:
-    image: bwdesigngroup/ignition-docker:latest
-    hostname: bwutil
+  tcp-echo-server:
+    image: venilnoronha/tcp-echo-server:latest
+    hostname: tcp-echo-server
     ports:
-      - 8088
+      - 8080
     volumes:
-      - ./ignition-bwutil:/workdir
-      - ./backups/gateway.gwbk:/restore.gwbk
+      - ./tcp-echo-server:/workdir
     environment:
       - SYMLINK_GITIGNORE=false
       - SYMLINK_LOGBACK=false
     command: >
-      -r /restore.gwbk
+      -p 8080
+  # gateway:
+  #   image: bwdesigngroup/ignition-docker:latest
+  #   hostname: bwutil
+  #   ports:
+  #     - 8088
+  #   volumes:
+  #     - ./ignition-bwutil:/workdir
+  #     - ./backups/gateway.gwbk:/restore.gwbk
+  #   environment:
+  #     - SYMLINK_GITIGNORE=false
+  #     - SYMLINK_LOGBACK=false
+  #   command: >
+  #     -r /restore.gwbk
+  # pgadmin:
+  #   image: dpage/pgadmin4:latest
+  #   hostname: pgadmin
+  #   ports:
+  #     - 8080
+  #   volumes:
+  #     - ./pgadmin:/var/lib/pgadmin
+  # mysql:
+  #   image: mysql:latest
+  #   hostname: mysql
+  #   ports:
+  #     - 3306
+  #   volumes:
+  #     - ./mysql:/var/lib/mysql
+  # postgres:
+  #   image: postgres:latest
+  #   hostname: postgres
+  #   ports:
+  #     - 5432
+  #   volumes:
+  #     - ./postgres:/var/lib/postgresql/data
